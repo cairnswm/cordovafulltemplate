@@ -5,19 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
 </head>
-<body>
-  <div data-role="page">
 
-    <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push"></div>
+<body>
+  <div id="mainpage" data-role="page">
+      <script>
+        $( "#mainpage" ).page({
+          create: function( event, ui ) { 
+            alert("Sub Page Loaded"); 
+            console.log("Sub Page loaded, start creating your content"); }
+        });
+      </script>
+
+    <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push">
+      Menu options
+    </div>
 
     <div data-role="header">
       <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a>
-      <h1>A</h1>
+      <h1>Application Page</h1>
       <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
     </div>
 
+
     <div data-role="content" role="main">
-      <p>Sample text and <a href="#">links</a>.</p>
+      <p id="text">Sample text and <a href="#">links</a>.</p>
       <fieldset class="ui-grid-a">
         <div class="ui-block-a"><button data-icon="flat-settings" data-theme="a">Button A</button></div>
         <div class="ui-block-b"><button data-icon="flat-new" data-theme="b">Button B</button></div>

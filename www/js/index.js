@@ -25,8 +25,7 @@ var app = {
     onDeviceReady: function() {
         console.log("device ready, start making you custom calls!");
 
-        // Start adding your code here....
-        alert("Ready");
+        // Start adding your code here....        
         $("#registersubmit").bind("click", function () { SubmitRegistration(); });
         $("#forgotsubmit").bind("click", function () { SubmitForgot(); });
         $("#loginsubmit").bind("click", function () { SubmitLogin(); });
@@ -138,10 +137,10 @@ function SubmitLogin()
             error.appendTo(element.parent().prev());
         },
         submitHandler: function (form) {
-            // do the send to server, on success move to 'home' page
-                alert("success");
-            $(':mobile-pagecontainer').pagecontainer('change', '#success', {
-                reload: false
+            //TODO: do the send to server, on success move to 'main' page            
+            saveLoginToken('1234567890');
+            $(':mobile-pagecontainer').pagecontainer('change', 'index2.html#mainpage', {
+                allowSamePageTransition: true
             });
             return false;
         }
