@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+        <title>App Template</title>
+    </head>
+    <body>
+        <div id="app">
+
+            <div  id="mainpage" data-role="page">
+              <script type="text/javascript" src="js/index2.js"></script>
+                <div data-role="header" data-id="header1" data-position="fixed" class="ui-header">
+                    <a href="#homepage" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext">Back</a>
+                    <h1>Application Main Page</h1>
+                </div>
+                <div data-role="navbar" data-grid="d">
+                    <ul>
+                        <li><a class="ui-btn-active" href="#">One</a></li>
+                        <li><a href="#">Two</a></li>
+                        <li><a href="#">Three</a></li>
+                        <li><a href="#">Four</a></li>
+                        <li><a href="#loginpage">Logout</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+                <div data-role="content"  class="big-text">
+                    <h2>A fully functional application template for Cordova, linking back to a php server. Uses AJAX for login and registration.</h2>
+                    <p>Free for anyone to use - by <a href="http://anndeve.co.za">Ann Deve</a></p>
+                    <p id='token'></p>
+                    <div id="listview" data-role="collapsible-set" data-theme="d" data-content-theme="d">
+                        <div data-role="collapsible" data-collapsed-icon="flat-time" data-expanded-icon="flat-cross" data-collapsed="false">
+                            <h3>Section 1</h3>
+                            <p>I'm the collapsible content for section 1</p>
+                        </div>
+                        <div data-role="collapsible" data-collapsed-icon="flat-calendar" data-expanded-icon="flat-cross">
+                            <h3>Section 2</h3>
+                            <p>I'm the collapsible content for section 2</p>
+                        </div>
+                        <div data-role="collapsible" data-collapsed-icon="flat-settings" data-expanded-icon="flat-cross">
+                            <h3>Section 3</h3>
+                            <p>I'm the collapsible content for section 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <script type="text/javascript" src="libs/fastclick.min.js"></script>
+        <!-- script type="text/javascript" src="cordova.js"></script -->
+        <script src="js/jquery.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+
+        <script type="text/javascript" src="js/security.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+
+        <script type="text/javascript">
+            app.initialize();
+            app.onDeviceReady();
+        </script>
+    </body>
+</html>

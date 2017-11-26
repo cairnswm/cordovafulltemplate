@@ -78,10 +78,30 @@ function SubmitRegistration()
         },
         submitHandler: function (form) {
             // do the send to server, on success move to 'home' page
-                alert("success");
-            $(':mobile-pagecontainer').pagecontainer('change', '#success', {
-                reload: false
-            });
+            $.ajax({
+              method: "POST",
+              dataType: "json",
+              url: "http://localhost:81/cordovafulltemplatephp/ajaxUser.php?action=register",
+              data: { registeruser: $('#registeruser').val(), 
+                      registerpassword: $('#registerpassword').val(),
+                      registerconfirm: $('#registerconfirm').val(),
+                      registeremail: $('#registeremail').val() }
+            })
+              .done(function( data ) {                
+                if (data.status == "S")
+                {
+                    saveLoginToken(data.data.token);
+                    $(':mobile-pagecontainer').pagecontainer('change', 'index2.html#mainpage', {
+                        allowSamePageTransition: true });
+                }
+                if (data.status == "E")
+                {
+                  alert( data.message );
+                }
+              })
+              .fail(function( data ) {
+                alert( data.responseText );
+              });            
             return false;
         }
     });
@@ -106,6 +126,7 @@ function SubmitForgot()
         submitHandler: function (form) {
             // do the send to server, on success move to 'home' page
                 alert("success");
+  
             $(':mobile-pagecontainer').pagecontainer('change', '#success', {
                 reload: false
             });
@@ -137,11 +158,27 @@ function SubmitLogin()
             error.appendTo(element.parent().prev());
         },
         submitHandler: function (form) {
-            //TODO: do the send to server, on success move to 'main' page            
-            saveLoginToken('1234567890');
-            $(':mobile-pagecontainer').pagecontainer('change', 'index2.html#mainpage', {
-                allowSamePageTransition: true
-            });
+            $.ajax({
+              method: "POST",
+              dataType: "json",
+              url: "http://localhost:81/cordovafulltemplatephp/ajaxUser.php?action=login",
+              data: { loginuser: $('#loginuser').val(), loginpassword: $('#loginpassword').val() }
+            })
+              .done(function( data ) {                
+                if (data.status == "S")
+                {
+                    saveLoginToken(data.data.token);
+                    $(':mobile-pagecontainer').pagecontainer('change', 'index2.html#mainpage', {
+                        allowSamePageTransition: true });
+                }
+                if (data.status == "E")
+                {
+                  alert( data.message );
+                }
+              })
+              .fail(function( data ) {
+                alert( data.responseText );
+              });            
             return false;
         }
     });
