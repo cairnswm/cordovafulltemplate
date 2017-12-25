@@ -183,3 +183,39 @@ function SubmitLogin()
         }
     });
 };
+
+function LoadData()
+{
+  i = 0;
+  $.ajax({
+    method: "POST",
+    dataType: "json",
+    url: "http://localhost:81/cordovafulltemplatephp/ajaxData.php?action=list",
+    data: { }
+  })
+  .done(function( data ) {                
+    if (data.status == "S")
+    {
+        content = "";
+        $('#listview').html("");
+        $.each(data.data, function (key, item){
+          content = content + '<div data-role="collapsible" id="item'+i+'" data-collapsed-icon="flat-time" data-expanded-icon="flat-cross" data-collapsed="false">'+
+                   '  <h3>'+item.name+'</h3>'+
+                   '  <p>'+item.detail+'</p>'+
+                   '</div>';                    
+        });
+        i = i + 1;
+        $('#listview').html(content).collapsibleset('refresh');
+        $("#item0").collapsible( "option", "collapsed", false );
+    }
+    if (data.status == "E")
+    {
+      alert( data.message );
+    }
+  })
+  .fail(function( data ) {
+    alert( data.responseText );
+  }); 
+ 
+}
+              
